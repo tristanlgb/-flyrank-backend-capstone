@@ -1,0 +1,36 @@
+# FlyRank Backend AI Engineering — Weeks 1–5
+
+Node.js and Express implementations for the first five Backend AI Engineering
+weeks. Each folder is independently runnable and documented.
+
+| Week | Project | Main proof |
+| --- | --- | --- |
+| 1 | [Backend foundations](week-01-foundations/README.md) | Node/Express request-response loop and health endpoint |
+| 2 | [In-memory Task API](week-02-task-api/README.md) | Full CRUD, validation, status codes, Swagger UI |
+| 3 | [Persistent Task API](week-03-database-api/README.md) | SQLite and PostgreSQL repositories behind one service contract |
+| 4 | [Supabase Auth API](week-04-auth-api/README.md) | Signup/login/logout, JWT guard, protected routes, Swagger bearer auth |
+| 5 | [Polite book scraper](week-05-scraper/README.md) | robots check, identified/rate-limited requests, schema-validated JSON |
+
+## Quick start
+
+```bash
+git clone https://github.com/tristanlgb/-flyrank-backend-capstone.git
+cd -flyrank-backend-capstone
+npm install
+npm test
+```
+
+Node.js 20+ is required. Read each week's README for its start command and any
+environment variables.
+
+See [Completion Status](COMPLETION-STATUS.md) for the exact automated results
+and the account/device-dependent checks that remain manual.
+
+## Transparency
+
+Weeks 2–5 follow the assignment text supplied by the student. The exact Week 1
+brief was not supplied and could not be found publicly, so Week 1 is explicitly
+presented as a reasonable Node/HTTP foundations exercise, not as a claim of
+exact brief compliance. AI assistance helped scaffold, review, and test the
+code. The student remains responsible for explaining it, running the required
+manual demonstrations, and submitting account-dependent evidence.

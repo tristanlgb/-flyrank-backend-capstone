@@ -1,0 +1,22 @@
+{
+  "name": "flyrank-backend-ai-weeks-1-5",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": ["week-*"],
+  "scripts": {
+    "test": "npm test --workspaces --if-present",
+    "lint": "eslint .",
+    "check": "npm run lint && npm test",
+    "start:w1": "npm start -w week-01-foundations",
+    "start:w2": "npm start -w week-02-task-api",
+    "start:w3": "npm start -w week-03-database-api",
+    "start:w4": "npm start -w week-04-auth-api",
+    "start:w5": "npm start -w week-05-scraper"
+  },
+  "devDependencies": {
+    "eslint": "^9.35.0",
+    "globals": "^16.3.0"
+  },
+  "engines": { "node": ">=20" }
+}
