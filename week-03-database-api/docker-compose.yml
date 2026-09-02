@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: task_user
+      POSTGRES_PASSWORD: task_password
+      POSTGRES_DB: task_api
+    volumes:
+      - task_data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U task_user -d task_api"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+  app:
+    build:
+      context: ..
+      dockerfile: week-03-database-api/Dockerfile
+    environment:
+      PORT: 3001
+      DB_DRIVER: postgres
+      DATABASE_URL: postgres://task_user:task_password@db:5432/task_api
+    ports: ["3001:3001"]
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  task_data:
