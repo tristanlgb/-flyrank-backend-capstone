@@ -1,0 +1,23 @@
+{
+  "target_url": "https://quotes.toscrape.com/js/",
+  "measured_at": "2026-09-02T04:28:20.633Z",
+  "iterations": 1,
+  "measurement_note": "Times are end-to-end. Node RSS delta measures coordinator overhead; renderer JS heap is reported separately because Chromium runs in child processes.",
+  "http": {
+    "strategy": "plain HTTP fetch + Cheerio",
+    "elapsed_ms": 518.51,
+    "node_rss_delta_mb": 4.22,
+    "response_bytes": 5808,
+    "quote_count": 0,
+    "result": "HTML downloaded, but JavaScript-rendered quotes are absent"
+  },
+  "playwright": {
+    "strategy": "Playwright + headless Chromium",
+    "elapsed_ms": 5802,
+    "node_rss_delta_mb": 2.32,
+    "renderer_js_heap_mb": 2.36,
+    "quote_count": 10,
+    "result": "JavaScript executed and rendered quotes were extracted"
+  },
+  "conclusion": "Plain HTTP is lighter and faster but incomplete for this JavaScript-rendered page; Playwright is justified when rendered content is required."
+}

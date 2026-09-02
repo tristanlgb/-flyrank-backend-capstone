@@ -29,6 +29,43 @@ The command writes:
 - `output/run-report.json`: timing and counts for the normal run.
 - `output/failure-proof-report.json`: evidence from the intentionally broken run.
 
+## Browser comparison: plain HTTP vs Playwright
+
+The required comparison uses the same JavaScript-rendered page for both tests:
+[`https://quotes.toscrape.com/js/`](https://quotes.toscrape.com/js/).
+
+```bash
+npx playwright install chromium
+npm run benchmark:browser -w week-05-scraper
+```
+
+Plain HTTP downloads the initial HTML and parses it with Cheerio. Playwright
+launches headless Chromium, executes the page JavaScript, waits for `.quote`,
+and then counts the rendered elements. The reproducible raw measurements are
+saved in [`output/browser-comparison.json`](./output/browser-comparison.json).
+
+| Strategy | Time | Node RSS increase | Renderer JS heap | Quotes found |
+| --- | ---: | ---: | ---: | ---: |
+| Plain HTTP + Cheerio | 518.51 ms | 4.22 MB | n/a | 0 |
+| Playwright + Chromium | 5802 ms | 2.32 MB | 2.36 MB | 10 |
+
+The benchmark reports end-to-end elapsed time. Memory is intentionally labeled:
+Node RSS delta measures the coordinator process, while the Chromium renderer's
+JavaScript heap is separate because the browser runs in child processes. These
+figures are one local run, not universal performance claims.
+
+For memory, HTTP added 4.22 MB to the Node process. The Playwright coordinator
+added 2.32 MB and the renderer used another 2.36 MB of JavaScript heap, for at
+least 4.68 MB across those two measured parts. This deliberately does not claim
+to be Chromium's total resident memory; browser, GPU, and utility child-process
+memory is outside this portable measurement, so the real browser cost is higher.
+
+Decision: HTTP is the correct default when the data exists in the response HTML
+because it is simpler, faster, and lighter. On this `/js` page, plain HTTP finds
+zero quotes because it does not execute JavaScript; Playwright costs more time
+and memory but returns all ten rendered quotes, so browser automation is
+justified for this specific page.
+
 ## Politeness and reliability controls
 
 - Honest user agent: `FlyRankLearningScraper/1.0 (educational assignment)`.

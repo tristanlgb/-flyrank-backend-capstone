@@ -14,6 +14,9 @@
   and writes separate data, error, and run reports. A live run collected 60
   valid product pages; a second run used 63 cached responses; and an injected
   404 proved that one broken page does not stop the other records.
+- Week 5 also benchmarks plain HTTP against Playwright on the same JavaScript
+  page. The committed run records time, scoped memory metrics, and the result:
+  HTTP found zero rendered quotes while Playwright found all ten.
 
 ## Requires student/account or machine access
 
