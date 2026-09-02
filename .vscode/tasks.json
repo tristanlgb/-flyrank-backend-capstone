@@ -1,0 +1,67 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Project: Verify everything",
+      "type": "npm",
+      "script": "check",
+      "path": ".",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Week 1: Start foundations API",
+      "type": "npm",
+      "script": "start:w1",
+      "path": ".",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Week 2: Start CRUD API",
+      "type": "npm",
+      "script": "start:w2",
+      "path": ".",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Week 3: Start database API",
+      "type": "npm",
+      "script": "start:w3",
+      "path": ".",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Week 4: Start auth API",
+      "type": "npm",
+      "script": "start:w4",
+      "path": ".",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Week 5: Run scraper",
+      "type": "npm",
+      "script": "start:w5",
+      "path": ".",
+      "problemMatcher": []
+    },
+    {
+      "label": "Week 5: Browser benchmark",
+      "type": "npm",
+      "script": "benchmark:browser",
+      "path": "week-05-scraper",
+      "problemMatcher": []
+    },
+    {
+      "label": "Week 5: Tests only",
+      "type": "npm",
+      "script": "test",
+      "path": "week-05-scraper",
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

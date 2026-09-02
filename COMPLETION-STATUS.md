@@ -4,12 +4,15 @@
 
 - Node.js/Express workspace installs with zero reported npm vulnerabilities.
 - ESLint passes across all source and test files.
-- 21 automated tests pass across Weeks 1–5.
+- 22 automated tests pass across Weeks 1–5.
 - Week 2 full CRUD statuses and validation are covered by API tests.
 - Week 3 SQLite uses SQL, preserves the Week 2 contract, and passes a real
   close/reopen persistence test.
 - Week 4 authentication routes and reusable bearer middleware pass with an
   injected provider double.
+- Week 4 starts without external credentials in an explicitly labeled,
+  in-memory local-development mode. The complete local signup, login,
+  protected-route, logout, and rejected-token lifecycle is tested.
 - Week 5 follows pagination, caches politely, validates raw and normalized data,
   and writes separate data, error, and run reports. A live run collected 60
   valid product pages; a second run used 63 cached responses; and an injected

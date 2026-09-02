@@ -7,8 +7,8 @@ const validCredentials = (body) => typeof body?.email === 'string' && body.email
 export function createApp(provider) {
   const app = express(); const requireAuth = createRequireAuth(provider);
   app.use(express.json()); app.use('/docs', swaggerUi.serve, swaggerUi.setup(openapi));
-  app.get('/', (_req, res) => res.json({ name: 'Supabase Auth API', version: '1.0', docs: '/docs' }));
-  app.get('/health', (_req, res) => res.json({ status: 'ok' }));
+  app.get('/', (_req, res) => res.json({ name: 'Authentication API', version: '1.0', provider: provider.mode || 'injected', docs: '/docs' }));
+  app.get('/health', (_req, res) => res.json({ status: 'ok', provider: provider.mode || 'injected' }));
   app.post('/auth/signup', async (req, res) => {
     if (!validCredentials(req.body)) return res.status(400).json({ error: 'Valid email and password of at least 6 characters are required' });
     try { return res.status(201).json({ user: await provider.signup(req.body.email, req.body.password) }); }

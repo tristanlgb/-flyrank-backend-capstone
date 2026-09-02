@@ -4,6 +4,7 @@ export class SupabaseAuthProvider {
   constructor(url, anonKey) {
     if (!url || !anonKey) throw new Error('SUPABASE_URL and SUPABASE_ANON_KEY are required');
     this.url = url; this.anonKey = anonKey;
+    this.mode = 'supabase';
     this.client = createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
   }
   async signup(email, password) {

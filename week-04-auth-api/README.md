@@ -5,11 +5,24 @@ middleware, protected profile/dashboard routes, and Swagger bearer auth.
 
 ## Setup
 
+For an immediate local run, no credentials are required:
+
+```bash
+npm start
+```
+
+The console will state `provider: local-development`. This mode hashes
+passwords, creates bearer tokens, and keeps users/sessions only in memory; they
+disappear when Node restarts. It exists for development and does not count as
+evidence of a real Supabase integration.
+
+For the assignment's real Supabase mode:
+
 1. Create a Supabase project and enable email/password authentication.
 2. Copy `.env.example` to `.env`.
 3. Add your own project URL and **anon/publishable** key. Never use or commit a
    service-role key.
-4. Start the API:
+4. Start the API. The console must state `provider: supabase`:
 
 ```bash
 npm start -w week-04-auth-api

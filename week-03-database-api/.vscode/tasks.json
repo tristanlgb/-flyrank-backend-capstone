@@ -1,0 +1,7 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "Start Week 3 database API", "type": "npm", "script": "start", "isBackground": true, "problemMatcher": [] },
+    { "label": "Test Week 3", "type": "npm", "script": "test", "group": "test", "problemMatcher": [] }
+  ]
+}

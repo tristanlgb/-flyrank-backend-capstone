@@ -23,6 +23,14 @@ npm test
 Node.js 20+ is required. Read each week's README for its start command and any
 environment variables.
 
+## Running from VS Code
+
+Open the repository root (`flyrank-backend-capstone`), not an individual week
+folder. Then use **Terminal → Run Task** and choose any named Week 1–5 task.
+`Ctrl+Shift+B` runs the default **Project: Verify everything** task. The Week 5
+scraper finishing and returning to the prompt is expected: it is a batch job,
+not a server. A line such as `valid=60 failed_pages=0` means it succeeded.
+
 See [Completion Status](COMPLETION-STATUS.md) for the exact automated results
 and the account/device-dependent checks that remain manual.
 
