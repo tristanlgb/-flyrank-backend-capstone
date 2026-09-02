@@ -2,7 +2,7 @@ import js from '@eslint/js';
 import globals from 'globals';
 
 export default [
-  { ignores: ['node_modules/**', 'coverage/**', 'week-05-scraper/output/**'] },
+  { ignores: ['node_modules/**', 'coverage/**', '**/dist/**', 'tmp/**', 'week-05-scraper/output/**'] },
   js.configs.recommended,
   {
     files: ['**/*.js'],

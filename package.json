@@ -1,5 +1,5 @@
 {
-  "name": "flyrank-backend-ai-weeks-1-5",
+  "name": "flyrank-backend-ai-capstone",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -12,7 +12,11 @@
     "start:w2": "npm start -w week-02-task-api",
     "start:w3": "npm start -w week-03-database-api",
     "start:w4": "npm start -w week-04-auth-api",
-    "start:w5": "npm start -w week-05-scraper"
+    "start:w5": "npm start -w week-05-scraper",
+    "start:w6": "npm start -w week-06-llm-api",
+    "start:w7:workflow": "npm run dev -w week-07-ai-workflow",
+    "start:w7:jobs": "npm start -w week-07-background-jobs",
+    "start:w7:reports": "npm start -w week-07-report-generator"
   },
   "devDependencies": {
     "eslint": "^9.35.0",

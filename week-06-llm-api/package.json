@@ -1,0 +1,1 @@
+{"name":"week-06-llm-api","version":"1.0.0","private":true,"type":"module","scripts":{"start":"node --env-file-if-exists=.env src/server.js","test":"node --test","eval":"node src/evals/run.js"},"dependencies":{"express":"^5.1.0","openai":"^5.16.0","zod":"^4.1.5"},"devDependencies":{"supertest":"^7.1.4"}}

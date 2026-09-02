@@ -1,0 +1,1 @@
+{"name":"week-07-background-jobs","version":"1.0.0","private":true,"type":"module","scripts":{"start":"node src/server.js","dev:inngest":"npx inngest-cli@latest dev -u http://localhost:3004/api/inngest","test":"node --test"},"dependencies":{"express":"^5.1.0","inngest":"^3.40.1"},"devDependencies":{"supertest":"^7.1.4"}}
