@@ -1,0 +1,1 @@
+import path from'node:path';import{openDb,getReportData,renderPdf,reportsDir}from'./report.js';const db=openDb();const file=path.join(reportsDir,'sample-book-report.pdf');await renderPdf(file,getReportData(db));db.close();console.log(file);
