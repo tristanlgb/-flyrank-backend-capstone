@@ -9,10 +9,8 @@ export function isAllowedByRobots(text, pathname, userAgent = '*') {
   return !disallowed.some((rule) => pathname.startsWith(rule));
 }
 
-export async function checkRobots(baseUrl, fetchFn, userAgent) {
+export async function checkRobots(baseUrl, fetcher) {
   const url = new URL('/robots.txt', baseUrl);
-  const response = await fetchFn(url, { headers: { 'User-Agent': userAgent } });
-  if (response.status === 404) return { allowed: true, note: 'robots.txt not published (404)' };
-  if (!response.ok) throw new Error(`robots.txt request failed with ${response.status}`);
-  return { allowed: isAllowedByRobots(await response.text(), new URL(baseUrl).pathname, userAgent), note: 'robots.txt checked' };
+  try { const response = await fetcher.get(url, 'robots.txt'); return { allowed: isAllowedByRobots(response.text, '/catalogue/', fetcher.userAgent), note: 'robots.txt checked' }; }
+  catch (error) { if (error.message === 'HTTP 404') return { allowed: true, note: 'no robots file found' }; throw error; }
 }

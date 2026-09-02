@@ -1,0 +1,14 @@
+{
+  "started_at": "2026-09-02T04:15:23.600Z",
+  "finished_at": "2026-09-02T04:15:24.844Z",
+  "duration_ms": 1244,
+  "catalogue_pages": 3,
+  "discovered_urls": 60,
+  "unique_urls": 61,
+  "pages_fetched": 0,
+  "cache_hits": 63,
+  "valid_records": 60,
+  "invalid_records": 0,
+  "failed_pages": 1,
+  "robots_result": "no robots file found"
+}

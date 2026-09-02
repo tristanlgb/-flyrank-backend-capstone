@@ -6,3 +6,4 @@ node_modules/
 coverage/
 dist/
 week-05-scraper/week-05-scraper/
+week-05-scraper/cache/

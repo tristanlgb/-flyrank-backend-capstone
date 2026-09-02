@@ -1,0 +1,24 @@
+Verified: 2026-09-02 (local Express server)
+
+POST /reset
+HTTP/1.1 200 OK
+[{"id":1,"title":"Learn the request-response loop","done":true},{"id":2,"title":"Build CRUD endpoints","done":false},{"id":3,"title":"Document the API","done":false}]
+
+POST /tasks
+HTTP/1.1 201 Created
+{"id":4,"title":"Document Week 2 evidence","done":false}
+
+GET /tasks/3
+HTTP/1.1 200 OK
+{"id":3,"title":"Document the API","done":false}
+
+PUT /tasks/3
+HTTP/1.1 200 OK
+{"id":3,"title":"Document Week 2 evidence","done":false}
+
+DELETE /tasks/3
+HTTP/1.1 204 No Content
+
+GET /tasks/999
+HTTP/1.1 404 Not Found
+{"error":"Task 999 not found"}
