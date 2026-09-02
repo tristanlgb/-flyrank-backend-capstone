@@ -1,0 +1,8 @@
+{
+  "name": "week-04-auth-api",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": { "start": "node src/server.js", "test": "node --test" },
+  "dependencies": { "@supabase/supabase-js": "^2.57.4", "dotenv": "^17.2.2", "express": "^5.1.0", "swagger-ui-express": "^5.0.1" },
+  "devDependencies": { "supertest": "^7.1.4" }
+}
