@@ -10,6 +10,10 @@ weeks. Each folder is independently runnable and documented.
 | 3 | [Persistent Task API](week-03-database-api/README.md) | SQLite and PostgreSQL repositories behind one service contract |
 | 4 | [Supabase Auth API](week-04-auth-api/README.md) | Signup/login/logout, JWT guard, protected routes, Swagger bearer auth |
 | 5 | [Polite book scraper](week-05-scraper/README.md) | robots check, identified/rate-limited requests, schema-validated JSON |
+| 6 | [Trustworthy LLM API](week-06-llm-api/README.md) | Structured output, validation, repair, retries, evals and kill switch |
+| 7 | [Visual AI workflow](week-07-ai-workflow/README.md) | React Flow decision graph executed with Inngest |
+| 7 | [Background jobs](week-07-background-jobs/README.md) | Fast 202 response, polling, retries and cron |
+| 7 | [PDF report generator](week-07-report-generator/README.md) | SQLite aggregation, stored PDFs and download links |
 
 ## Quick start
 
