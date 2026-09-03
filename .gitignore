@@ -12,4 +12,5 @@ week-05-scraper/cache/
 **/reports/
 **/report.db
 **/quarantine/*.jsonl
+**/logs/*.jsonl
 **/.next/
