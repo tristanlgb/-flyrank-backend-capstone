@@ -62,6 +62,45 @@
       "path": "week-05-scraper",
       "group": "test",
       "problemMatcher": []
+    },
+    {
+      "label": "Weeks 6-7: Start all services",
+      "type": "npm",
+      "script": "dev:w6-w7",
+      "path": ".",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Weeks 6-7: End-to-end smoke test",
+      "type": "npm",
+      "script": "smoke:w6-w7",
+      "path": ".",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Week 6: LLM evaluation",
+      "type": "npm",
+      "script": "eval",
+      "path": "week-06-llm-api",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Week 7: Build visual workflow",
+      "type": "npm",
+      "script": "build",
+      "path": "week-07-ai-workflow",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Week 7: Seed report database",
+      "type": "npm",
+      "script": "seed",
+      "path": "week-07-report-generator",
+      "problemMatcher": []
     }
   ]
 }

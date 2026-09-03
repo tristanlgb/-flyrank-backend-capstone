@@ -1,0 +1,28 @@
+{
+  "info": {"name":"FlyRank Backend Weeks 6-7","description":"Local end-to-end checks for the LLM, background job, PDF report and visual workflow APIs.","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "variable": [
+    {"key":"llmBase","value":"http://localhost:3003"},{"key":"jobsBase","value":"http://localhost:3004"},{"key":"reportsBase","value":"http://localhost:3005"},{"key":"workflowBase","value":"http://localhost:3007"}
+  ],
+  "item": [
+    {"name":"Week 6 - LLM API","item":[
+      {"name":"Health","request":{"method":"GET","url":"{{llmBase}}/health"}},
+      {"name":"Enrich book","event":[{"listen":"test","script":{"exec":["pm.test('200 and controlled category', () => { pm.response.to.have.status(200); pm.expect(pm.response.json().data.category).to.be.oneOf(['fiction','nonfiction','technology','business','other']); });"]}}],"request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"title\":\"Learning Node\",\"description\":\"A practical JavaScript backend guide\",\"price\":24,\"rating\":5}"},"url":"{{llmBase}}/ai/enrich-book"}},
+      {"name":"Reject invalid book","event":[{"listen":"test","script":{"exec":["pm.test('400 names fields', () => pm.response.to.have.status(400));"]}}],"request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{llmBase}}/ai/enrich-book"}}
+    ]},
+    {"name":"Week 7 - Background Jobs","item":[
+      {"name":"Create report job","event":[{"listen":"test","script":{"exec":["pm.test('202 accepted', () => pm.response.to.have.status(202));","pm.collectionVariables.set('jobId', pm.response.json().id);"]}}],"request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"topic\":\"cats\"}"},"url":"{{jobsBase}}/reports"}},
+      {"name":"Poll report job","request":{"method":"GET","url":"{{jobsBase}}/reports/{{jobId}}"}},
+      {"name":"Reject missing topic","event":[{"listen":"test","script":{"exec":["pm.test('400 rejected before enqueue', () => pm.response.to.have.status(400));"]}}],"request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{jobsBase}}/reports"}}
+    ]},
+    {"name":"Week 7 - PDF Reports","item":[
+      {"name":"Generate forced report","event":[{"listen":"test","script":{"exec":["pm.test('201 and file link', () => pm.response.to.have.status(201));","pm.collectionVariables.set('reportId', pm.response.json().id);"]}}],"request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"force\":true}"},"url":"{{reportsBase}}/reports"}},
+      {"name":"Get report metadata","request":{"method":"GET","url":"{{reportsBase}}/reports/{{reportId}}"}},
+      {"name":"Download PDF","event":[{"listen":"test","script":{"exec":["pm.test('PDF response', () => { pm.response.to.have.status(200); pm.expect(pm.response.headers.get('Content-Type')).to.include('application/pdf'); });"]}}],"request":{"method":"GET","url":"{{reportsBase}}/reports/{{reportId}}/file"}}
+    ]},
+    {"name":"Week 7 - Visual Workflow","item":[
+      {"name":"Execute YES-NO graph","event":[{"listen":"test","script":{"exec":["pm.test('202 accepted', () => pm.response.to.have.status(202));","pm.collectionVariables.set('runId', pm.response.json().id);"]}}],"request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"input\":\"I need help with a broken invoice\",\"nodes\":[{\"id\":\"start\",\"data\":{\"label\":\"Classify\",\"prompt\":\"Is this a support request?\"}},{\"id\":\"support\",\"data\":{\"label\":\"Support\",\"prompt\":\"Is it urgent?\"}}],\"edges\":[{\"source\":\"start\",\"target\":\"support\",\"label\":\"YES\"}]}"},"url":"{{workflowBase}}/api/runs"}},
+      {"name":"Poll workflow","request":{"method":"GET","url":"{{workflowBase}}/api/runs/{{runId}}"}},
+      {"name":"Reject empty graph","event":[{"listen":"test","script":{"exec":["pm.test('400 empty graph', () => pm.response.to.have.status(400));"]}}],"request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{}"},"url":"{{workflowBase}}/api/runs"}}
+    ]}
+  ]
+}

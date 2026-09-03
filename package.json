@@ -16,7 +16,9 @@
     "start:w6": "npm start -w week-06-llm-api",
     "start:w7:workflow": "npm run dev -w week-07-ai-workflow",
     "start:w7:jobs": "npm start -w week-07-background-jobs",
-    "start:w7:reports": "npm start -w week-07-report-generator"
+    "start:w7:reports": "npm start -w week-07-report-generator",
+    "smoke:w6-w7": "node scripts/smoke-weeks-6-7.mjs",
+    "dev:w6-w7": "concurrently -n LLM,JOBS,WORKER,REPORTS,WORKFLOW \"npm run start:w6\" \"npm run start:w7:jobs\" \"npx inngest-cli@1.44.0 dev -u http://localhost:3004/api/inngest -u http://localhost:3007/api/inngest\" \"npm run start:w7:reports\" \"npm run start:w7:workflow\""
   },
   "devDependencies": {
     "eslint": "^9.35.0",

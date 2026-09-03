@@ -1,6 +1,6 @@
-# FlyRank Backend AI Engineering — Weeks 1–5
+# FlyRank Backend AI Engineering — Weeks 1–7
 
-Node.js and Express implementations for the first five Backend AI Engineering
+Node.js and Express implementations for the first seven Backend AI Engineering
 weeks. Each folder is independently runnable and documented.
 
 | Week | Project | Main proof |
@@ -27,10 +27,20 @@ npm test
 Node.js 20+ is required. Read each week's README for its start command and any
 environment variables.
 
+To run every Week 6–7 service and both Inngest applications together:
+
+```bash
+npm run dev:w6-w7
+# in another terminal
+npm run smoke:w6-w7
+```
+
+Import [the Postman collection](postman/FlyRank-Weeks-6-7.postman_collection.json) for organized manual requests. See the [local verification evidence](docs/evidence/WEEKS-6-7-LOCAL-VERIFICATION.md) for the last complete run.
+
 ## Running from VS Code
 
 Open the repository root (`flyrank-backend-capstone`), not an individual week
-folder. Then use **Terminal → Run Task** and choose any named Week 1–5 task.
+folder. Then use **Terminal → Run Task** and choose a named task.
 `Ctrl+Shift+B` runs the default **Project: Verify everything** task. The Week 5
 scraper finishing and returning to the prompt is expected: it is a batch job,
 not a server. A line such as `valid=60 failed_pages=0` means it succeeded.
